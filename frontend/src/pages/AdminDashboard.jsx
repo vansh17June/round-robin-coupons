@@ -8,6 +8,7 @@ function AdminDashboard() {
     const [coupons, setCoupons] = useState([]);
     const [newCoupon, setNewCoupon] = useState("");
     const [loading, setLoading] = useState(false);
+    const [message,setMessage]=useState("");
 
     useEffect(() => {
         fetchCoupons();
@@ -27,10 +28,15 @@ function AdminDashboard() {
     const handleAddCoupon = async () => {
         if (!newCoupon) return;
         try {
-            await axios.post(`https://round-robin-coupons.onrender.com/api/admin/add`, { code: newCoupon }, { withCredentials: true });
+            const response=await axios.post(`https://round-robin-coupons.onrender.com/api/admin/add`, { code: newCoupon }, { withCredentials: true });
             setNewCoupon("");
             fetchCoupons();
         } catch (error) {
+            const alertInfo=error.response.data?.message;
+            if(alertInfo){
+              alert(alertInfo);
+            }
+                
             console.error("Error adding coupon", error);
         }
     };

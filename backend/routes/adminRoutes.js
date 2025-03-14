@@ -20,7 +20,12 @@ router.post("/login", async (req, res) => {
     if (password !== admin.password) return res.status(400).json({ message: "Invalid credentials" });
 
     const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-    res.cookie("token", token, { httpOnly: true, maxAge: 3600000 });
+    res.cookie("token", token, {
+    httpOnly: true, // Prevents client-side JS access
+    secure: true, // Required for HTTPS (set `false` for localhost)
+    sameSite: "None", // Required for cross-origin cookies
+     maxAge:3600000
+  });
     res.json({ message: "Login successful" });
 });
 router.post("/logout", (req, res) => {

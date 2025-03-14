@@ -15,7 +15,7 @@ function ClaimCoupon() {
     const handleClaim = async () => {
         setLoading(true);
         try {
-            const response = await axios.post(`${API_BASE_URL}/api/coupons/claim`, {}, { withCredentials: true });
+            const response = await axios.post(`https://round-robin-coupons.onrender.com/api/coupons/claim`, {}, { withCredentials: true });
             setMessage(response.data.message);
             setCoupon(response.data.coupon);
         } catch (error) {

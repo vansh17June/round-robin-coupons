@@ -16,7 +16,7 @@ function AdminDashboard() {
     const fetchCoupons = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(`${API_BASE_URL}/api/admin/coupons`, { withCredentials: true });
+            const response = await axios.get(`https://round-robin-coupons.onrender.com/api/admin/coupons`, { withCredentials: true });
             setCoupons(response.data);
         } catch (error) {
             console.error("Error fetching coupons", error);

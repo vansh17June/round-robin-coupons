@@ -27,7 +27,7 @@ function AdminDashboard() {
     const handleAddCoupon = async () => {
         if (!newCoupon) return;
         try {
-            await axios.post(`${API_BASE_URL}/api/admin/add`, { code: newCoupon }, { withCredentials: true });
+            await axios.post(`https://round-robin-coupons.onrender.com/api/admin/add`, { code: newCoupon }, { withCredentials: true });
             setNewCoupon("");
             fetchCoupons();
         } catch (error) {
@@ -37,7 +37,7 @@ function AdminDashboard() {
 
     const handleDeleteCoupon = async (code) => {
         try {
-            await axios.delete(`${API_BASE_URL}/api/admin/delete/${code}`, { withCredentials: true });
+            await axios.delete(`https://round-robin-coupons.onrender.com/api/admin/delete/${code}`, { withCredentials: true });
             fetchCoupons();
         } catch (error) {
             console.error("Error deleting coupon", error);

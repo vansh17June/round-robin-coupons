@@ -19,7 +19,9 @@ function ClaimCoupon() {
             setMessage(response.data.message);
             setCoupon(response.data.coupon);
         } catch (error) {
+            console.log(error);
             setMessage(error.response?.data?.message || "Error claiming coupon");
+            
         }
         setLoading(false);
     };

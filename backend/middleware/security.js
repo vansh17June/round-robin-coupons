@@ -12,7 +12,7 @@ const ipCooldownMiddleware = async (req, res, next) => {
     if (existingRecord) {
         const timeElapsed = Date.now() - new Date(existingRecord.lastClaim).getTime();
         if (timeElapsed < COOLDOWN_TIME) {
-            return res.status(429).json({ message: "Cooldown period active." });
+            return res.status(429).json({ message: "Cooldown period active.Same Ip Address" });
         }
     }
     
@@ -21,10 +21,10 @@ const ipCooldownMiddleware = async (req, res, next) => {
 };
 
 const cookieCooldownMiddleware =async (req, res, next) => {
-    if (req.cookies.userToken) {
+    if (req.cookies.userToken==="true") {
         return res.status(429).json({ message: "You have already claimed in this session." });
     };
-  cont userToken="true";
+  const userToken="true";
     res.cookie("userToken", userToken , {
     httpOnly: true, // Prevents client-side JS access
     secure: true, // Required for HTTPS (set `false` for localhost)

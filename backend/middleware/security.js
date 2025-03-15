@@ -1,6 +1,7 @@
 const CookieParser = require("cookie-parser");
 const IPLog = require("../models/IPLog");
 
+
 const COOLDOWN_TIME = 60 * 60 * 1000;
 
 
@@ -19,11 +20,12 @@ const ipCooldownMiddleware = async (req, res, next) => {
     next();
 };
 
-const cookieCooldownMiddleware = (req, res, next) => {
+const cookieCooldownMiddleware =async (req, res, next) => {
     if (req.cookies.userToken) {
         return res.status(429).json({ message: "You have already claimed in this session." });
-    }
-    res.cookie("userToken", "true", , {
+    };
+  cont userToken="true";
+    res.cookie("userToken", userToken , {
     httpOnly: true, // Prevents client-side JS access
     secure: true, // Required for HTTPS (set `false` for localhost)
     sameSite: "None", // Required for cross-origin cookies

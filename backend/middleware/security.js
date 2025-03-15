@@ -23,7 +23,12 @@ const cookieCooldownMiddleware = (req, res, next) => {
     if (req.cookies.userToken) {
         return res.status(429).json({ message: "You have already claimed in this session." });
     }
-    res.cookie("userToken", "true", { maxAge: COOLDOWN_TIME, httpOnly: true });
+    res.cookie("userToken", "true", , {
+    httpOnly: true, // Prevents client-side JS access
+    secure: true, // Required for HTTPS (set `false` for localhost)
+    sameSite: "None", // Required for cross-origin cookies
+     maxAge:3600000
+  });
     next();
 };
 

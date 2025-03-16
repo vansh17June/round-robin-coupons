@@ -121,8 +121,7 @@ VITE_API_BASE_URL=http://localhost:4000
 - **Free hosting services may take some time** to process backend requests.
 - Ensure **CORS is correctly configured** for production.
 
-## License
-This project is open-source and available under the **MIT License**.
+
 
 ---
 

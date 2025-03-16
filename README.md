@@ -106,7 +106,7 @@ VITE_API_BASE_URL=http://localhost:4000
 - `POST /api/admin/login` → Admin login.
 - `GET /api/admin/coupons` → Get all coupons.
 - `POST /api/admin/add` → Add a new coupon.
-- `DELETE /api/admin/delete/:id` → Delete a coupon.
+- `DELETE /api/admin/delete/:coupon` → Delete a coupon.
 
 ## Deployment
 ### 1️⃣ Deploy Backend
